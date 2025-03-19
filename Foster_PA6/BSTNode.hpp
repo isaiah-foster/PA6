@@ -1,29 +1,33 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <ostream>
 
 template <typename T>
 class BSTNode
 {
 private:
 	char englishChar;
-	std::string morseCode;
+	T morseCode;
 	BSTNode<T>* left;
 	BSTNode<T>* right;
 
 public:
 	BSTNode();
-	BSTNode(char englishChar, std::string morseCode);
-	BSTNode(char englishChar, std::string morseCode, BSTNode<T>* left, BSTNode<T>* right);
+	BSTNode(T morseCode, char englishChar);
 	~BSTNode();
 	char getEnglishChar();
-	std::string getMorseCode();
-	BSTNode<T>* getLeft();
-	BSTNode<T>* getRight();
+	T getMorseCode();
 	void setEnglishChar(char englishChar);
-	void setMorseCode(std::string morseCode);
-	void setLeft(BSTNode<T>* left);
-	void setRight(BSTNode<T>* right);
+	void setMorseCode(T morseCode);
+	BSTNode*& getLeft();
+	BSTNode*& getRight();
+	friend std::ostream& operator<<(std::ostream& lhs, BSTNode<T>* rhs)
+	{
+		lhs << rhs->getEnglishChar() << " " << rhs->getMorseCode() << std::endl;
+		return lhs;
+	}
 };
 
 template <typename T>
@@ -36,21 +40,12 @@ BSTNode<T>::BSTNode()
 }
 
 template <typename T>
-BSTNode<T>::BSTNode(char englishChar, std::string morseCode)
+BSTNode<T>::BSTNode(T morseCode, char englishChar)
 {
 	this->englishChar = englishChar;
 	this->morseCode = morseCode;
 	this->left = nullptr;
 	this->right = nullptr;
-}
-
-template <typename T>
-BSTNode<T>::BSTNode(char englishChar, std::string morseCode, BSTNode<T>* left, BSTNode<T>* right)
-{
-	this->englishChar = englishChar;
-	this->morseCode = morseCode;
-	this->left = left;
-	this->right = right;
 }
 
 template <typename T>
@@ -65,22 +60,11 @@ char BSTNode<T>::getEnglishChar()
 }
 
 template <typename T>
-std::string BSTNode<T>::getMorseCode()
+T BSTNode<T>::getMorseCode()
 {
 	return this->morseCode;
 }
 
-template <typename T>
-BSTNode<T>* BSTNode<T>::getLeft()
-{
-	return this->left;
-}
-
-template <typename T>
-BSTNode<T>* BSTNode<T>::getRight()
-{
-	return this->right;
-}
 
 template <typename T>
 void BSTNode<T>::setEnglishChar(char englishChar)
@@ -89,19 +73,19 @@ void BSTNode<T>::setEnglishChar(char englishChar)
 }
 
 template <typename T>
-void BSTNode<T>::setMorseCode(std::string morseCode)
+void BSTNode<T>::setMorseCode(T morseCode)
 {
 	this->morseCode = morseCode;
 }
 
 template <typename T>
-void BSTNode<T>::setLeft(BSTNode<T>* left)
+BSTNode<T>*& BSTNode<T>::getLeft()
 {
-	this->left = left;
+	return left;
 }
 
 template <typename T>
-void BSTNode<T>::setRight(BSTNode<T>* right)
+BSTNode<T>*& BSTNode<T>::getRight()
 {
-	this->right = right;
+	return right;
 }
