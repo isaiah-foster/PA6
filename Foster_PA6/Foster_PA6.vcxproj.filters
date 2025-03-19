@@ -31,7 +31,7 @@
     <Text Include="MorseTable.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="Conversion.txt">
+    <Text Include="Convert.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

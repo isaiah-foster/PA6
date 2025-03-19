@@ -107,7 +107,11 @@ void BST<T>::search(char character, BSTNode<T>* pRoot)
 	search(character, pRoot->getLeft());
 	if (pRoot->getEnglishChar() == character)
 	{
-		std::cout<<pRoot->getMorseCode()<<" ";
+		for (int i = 0; i < pRoot->getMorseCode().size(); i++)
+		{
+			std::cout << pRoot->getMorseCode()[i] << " ";
+		}
+		std::cout<<"   "; //not sure why he wants so many spaces but here it is it looks terrible
 	}
 	search(character, pRoot->getRight());
 	
