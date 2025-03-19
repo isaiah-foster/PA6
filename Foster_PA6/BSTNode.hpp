@@ -1,3 +1,13 @@
+/*File: BSTNode.hpp
+* Author: Isaiah Foster
+* Professor: Andy O'fallon
+* Class: Cpts_122
+* Assignment: PA6
+* Created: 03/15/2025
+* Last updated: 03/18/2025
+* Description: Defines BSTNode class
+*/
+
 #pragma once
 #include <iostream>
 #include <fstream>
@@ -19,8 +29,6 @@ public:
 	~BSTNode();
 	char getEnglishChar();
 	T getMorseCode();
-	void setEnglishChar(char englishChar);
-	void setMorseCode(T morseCode);
 	BSTNode*& getLeft();
 	BSTNode*& getRight();
 	friend std::ostream& operator<<(std::ostream& lhs, BSTNode<T>* rhs)
@@ -63,19 +71,6 @@ template <typename T>
 T BSTNode<T>::getMorseCode()
 {
 	return this->morseCode;
-}
-
-
-template <typename T>
-void BSTNode<T>::setEnglishChar(char englishChar)
-{
-	this->englishChar = englishChar;
-}
-
-template <typename T>
-void BSTNode<T>::setMorseCode(T morseCode)
-{
-	this->morseCode = morseCode;
 }
 
 template <typename T>

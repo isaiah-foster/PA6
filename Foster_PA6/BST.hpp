@@ -1,3 +1,13 @@
+/*File: BST.hpp
+* Author: Isaiah Foster
+* Professor: Andy O'fallon
+* Class: Cpts_122
+* Assignment: PA6
+* Created: 03/15/2025
+* Last updated: 03/18/2025
+* Description: defines BST class
+*/
+
 #pragma once
 #include "BSTNode.hpp"
 using std::string;
@@ -11,13 +21,14 @@ private:
 	void insert(T newMorse, char newChar, BSTNode<T>** pTree);
 	void printInOrder(BSTNode<T>* pRoot);
 	void search(char character, BSTNode<T>* pRoot);
+	void destroyTree(BSTNode<T>* pRoot);
 
 public:
 	void insert(T newData, char newCHar);
 	BST();
 	~BST();
 	void printInOrder();
-	void search(char character);
+	void search(char character); //searches with in order traversal
 };
 
 template <typename T>
@@ -41,7 +52,7 @@ BST<T>::BST()
 template <typename T>
 BST<T>::~BST()
 {
-
+	destroyTree(pRoot);
 }
 
 template <typename T>
@@ -100,4 +111,13 @@ void BST<T>::search(char character, BSTNode<T>* pRoot)
 	}
 	search(character, pRoot->getRight());
 	
+}
+
+template<typename T>
+void BST<T>::destroyTree(BSTNode<T>* pRoot)
+{
+	if (!pRoot) return;
+	destroyTree(pRoot->getLeft());
+	destroyTree(pRoot->getRight());
+	delete pRoot;
 }
