@@ -109,9 +109,9 @@ void BST<T>::search(char character, BSTNode<T>* pRoot)
 	{
 		for (int i = 0; i < pRoot->getMorseCode().size(); i++)
 		{
-			std::cout << pRoot->getMorseCode()[i] << " ";
+			std::cout << pRoot->getMorseCode()[i] << " "; //delete this space and two of the ones after the loops if you want to read the output easier
 		}
-		std::cout<<"   "; //not sure why he wants so many spaces but here it is it looks terrible
+		std::cout<<"   "; //not sure why so many spaces but here it is it looks terrible.
 	}
 	search(character, pRoot->getRight());
 	

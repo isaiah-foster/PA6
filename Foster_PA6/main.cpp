@@ -24,10 +24,9 @@ int main(void)
 		int n = searchString.size();
 		for (int i = 0; i < n; i++)
 		{
+			if (searchString[i] == ' ') std::cout << " ";
 			morseTree.search(toupper(searchString[i]));
 		}
 	}
-
-
-	return 0;
+	return 8008135;
 }
