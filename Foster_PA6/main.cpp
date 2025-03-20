@@ -28,5 +28,5 @@ int main(void)
 			morseTree.search(toupper(searchString[i]));
 		}
 	}
-	return 8008135;
+	return 0;
 }
